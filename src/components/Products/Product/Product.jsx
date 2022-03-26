@@ -2,21 +2,18 @@ import React from "react";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import "./Product.css";
-const Product = ({ auth }) => {
+const Product = ({ auth, product }) => {
+  const { name, image, price } = product;
   const navigate = useNavigate();
   return (
     <div className="product">
       <div className="image">
-        <img
-          width={"300"}
-          src="https://images.musicstore.de/images/1600/yamaha-c40-classical-guitar-_1_GIT0000636-000.jpg"
-          alt="guitar"
-        />
+        <img width={"300"} src={image} alt={name} />
       </div>
       <div className="details">
-        <h3>Yamaah 43cd</h3>
+        <h3>{name}</h3>
         <div className="inner-details">
-          <span>$4323</span>
+          <span>${price}</span>
           {auth ? (
             <button>
               <MdOutlineAddShoppingCart />

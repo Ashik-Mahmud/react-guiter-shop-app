@@ -20,7 +20,7 @@ const Products = ({ auth }) => {
         </div>
         <div className="product-container">
           {products.map((product) => (
-            <Product key={product.id} auth={auth} />
+            <Product key={product.id} auth={auth} product={product} />
           ))}
         </div>
       </div>

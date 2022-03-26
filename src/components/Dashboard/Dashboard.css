@@ -1,0 +1,13 @@
+#dashboard {
+  display: grid;
+  place-items: center;
+  min-height: 90vh;
+  position: relative;
+  font-family: poppins;
+}
+
+#dashboard h1 {
+  font-size: 3rem;
+  color: var(--primary-color);
+  text-transform: capitalize;
+}

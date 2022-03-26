@@ -6,18 +6,19 @@ const Dashboard = () => {
 
   const sessionUsername = sessionStorage.getItem("user");
   useEffect(() => {
-    console.log(sessionUsername);
     if (!sessionUsername) {
       navigate("/login");
     }
   }, [navigate, sessionUsername]);
 
   return (
-    <section id="dashboard">
-      <div className="container">
-        <h1>Welcome To the Dashboard {sessionUsername}</h1>
-      </div>
-    </section>
+    <>
+      <section id="dashboard">
+        <div className="container">
+          <h1>Welcome To the Dashboard {sessionUsername}</h1>
+        </div>
+      </section>
+    </>
   );
 };
 

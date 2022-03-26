@@ -70,10 +70,11 @@ const LoginSignUp = ({ setAuth, auth }) => {
     );
 
     if (isHasAccount) {
+      setAuth(true);
       navigate("/dashboard");
       sessionStorage.setItem("user", loginUsername);
     } else {
-      return alert("Sorry Not Registered Account by this username");
+      return alert("Sorry Not Registered Account by this username or password");
     }
   };
 

@@ -4,7 +4,7 @@ import { BiUserCircle } from "react-icons/bi";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import "./Header.css";
-const Header = ({ auth, setAuth }) => {
+const Header = ({ auth, setAuth, isDashboard }) => {
   const handleLogOut = () => {
     if (window.confirm("Do you want to log Out?")) {
       sessionStorage.removeItem("user");

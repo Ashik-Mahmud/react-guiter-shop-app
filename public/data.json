@@ -2,25 +2,25 @@
   {
     "id": 1,
     "name": "yamaha 434CD",
-    "price": 2345,
+    "price": 235,
     "image": "https://images.musicstore.de/images/1600/yamaha-c40-classical-guitar-_1_GIT0000636-000.jpg"
   },
   {
     "id": 2,
-    "name": "yamaha 434CD",
-    "price": 2345,
-    "image": "https://images.musicstore.de/images/1600/yamaha-c40-classical-guitar-_1_GIT0000636-000.jpg"
+    "name": "Samsung 434CD",
+    "price": 1500,
+    "image": "https://multimedia.bbycastatic.ca/multimedia/products/500x500/152/15232/15232456.jpg"
   },
   {
     "id": 3,
-    "name": "yamaha 434CD",
-    "price": 2345,
-    "image": "https://images.musicstore.de/images/1600/yamaha-c40-classical-guitar-_1_GIT0000636-000.jpg"
+    "name": "Electric 434CD",
+    "price": 1000,
+    "image": "https://d1aeri3ty3izns.cloudfront.net/media/23/235459/1200/preview_4.jpg"
   },
   {
     "id": 4,
-    "name": "yamaha 434CD",
-    "price": 2345,
-    "image": "https://images.musicstore.de/images/1600/yamaha-c40-classical-guitar-_1_GIT0000636-000.jpg"
+    "name": "Honda 434CD",
+    "price": 400,
+    "image": "https://rukminim1.flixcart.com/image/612/612/kz7bcsw0/acoustic-guitar/i/o/p/-original-imagb9fhryjksckr.jpeg?q=70"
   }
 ]
