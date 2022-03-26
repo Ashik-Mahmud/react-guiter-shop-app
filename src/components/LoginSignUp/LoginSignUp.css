@@ -1,0 +1,37 @@
+#login {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  position: relative;
+  background-color: #f8f8f8;
+}
+#login .login-area {
+  background-color: #fff;
+  padding: 2rem;
+  width: 450px;
+  position: relative;
+}
+#login .login-area h3 {
+  margin: 1.3rem 0rem;
+}
+#login input {
+  width: 100%;
+  margin: 0.4rem 0rem;
+  padding: 0.5rem 1rem;
+  font-family: poppins;
+  font-size: 1rem;
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+#login button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-family: poppins;
+  margin: 0.5rem 0rem;
+}
