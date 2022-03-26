@@ -41,7 +41,7 @@ const Header = ({ auth, setAuth, isDashboard }) => {
             {auth && (
               <>
                 <li>
-                  <NavLink to={"/carts"} className="user-link">
+                  <NavLink to={"/cart"} className="user-link">
                     <MdOutlineShoppingCart />
                     <sup className="badge">0</sup>
                   </NavLink>

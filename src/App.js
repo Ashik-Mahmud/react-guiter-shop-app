@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import About from './components/About/About';
+import Cart from './components/Cart/Cart';
 import Dashboard from './components/Dashboard/Dashboard';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
@@ -20,10 +22,12 @@ function App() {
     <Router>
         <Header setAuth={setAuth} auth={auth} />
         <Routes>
-            <Route path='/' element={<Home auth={auth} setAuth={setAuth} />} />
-            <Route path='/login' element={<LoginSignUp setAuth={setAuth} auth={auth}/>} />
-            <Route path='/dashboard' element={<Dashboard setAuth={setAuth} auth={auth} />} />
-            <Route path='/profile' element={<Profile />} />
+            <Route path='/' element={<Home auth={auth}  />} />
+            <Route path='/login' element={<LoginSignUp setAuth={setAuth}/>} />
+            <Route path='/dashboard' element={<Dashboard  />} />
+            <Route path='/profile' element={<Profile setAuth={setAuth} />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/about' element={<About />} />
         </Routes>
     </Router>
        

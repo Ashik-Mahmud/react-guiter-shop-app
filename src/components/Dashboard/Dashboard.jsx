@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 const Dashboard = () => {
   const navigate = useNavigate();
-
   const sessionUsername = sessionStorage.getItem("user");
   useEffect(() => {
     if (!sessionUsername) {

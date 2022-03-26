@@ -14,7 +14,8 @@
 #login .login-area h3 {
   margin: 1.3rem 0rem;
 }
-#login input {
+#login input,
+.edit-panel input {
   width: 100%;
   margin: 0.4rem 0rem;
   padding: 0.5rem 1rem;

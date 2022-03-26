@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Storage } from "../Storage/Storage";
 import "./LoginSignUp.css";
-const LoginSignUp = ({ setAuth, auth }) => {
+const LoginSignUp = ({ setAuth }) => {
   const [show, setShow] = useState(false);
   /* for data save */
   const [name, setName] = useState("");
@@ -35,9 +35,10 @@ const LoginSignUp = ({ setAuth, auth }) => {
     }
     const items = Storage();
     const isHas = items.find((item) => item.username === username);
-    console.log(isHas);
+    const id = Math.round(Math.random() * 10000);
     if (!isHas) {
       items.push({
+        id,
         name,
         email,
         username,

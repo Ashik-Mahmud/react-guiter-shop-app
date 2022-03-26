@@ -21,7 +21,7 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: -46%;
+  top: -40%;
   overflow: hidden;
 }
 #profile .avatar img {
@@ -61,4 +61,26 @@
 }
 #profile button:last-child {
   background-color: #df7861;
+}
+
+.edit-panel {
+  margin: 1rem 0rem;
+  padding: 1rem 2rem;
+  position: fixed;
+  background-color: #f6f6f6;
+  top: 50%;
+  right: -100%;
+  transform: translateY(-50%);
+  transition: all 0.4s ease;
+  border-radius: 5px;
+}
+.edit-panel.active {
+  right: 15%;
+}
+.edit-panel button {
+  background-color: var(--primary-color) !important;
+}
+
+.edit-panel h3 {
+  margin-bottom: 1rem;
 }
