@@ -1,7 +1,9 @@
 import React from "react";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 import "./Product.css";
-const Product = () => {
+const Product = ({ auth }) => {
+  const navigate = useNavigate();
   return (
     <div className="product">
       <div className="image">
@@ -15,9 +17,13 @@ const Product = () => {
         <h3>Yamaah 43cd</h3>
         <div className="inner-details">
           <span>$4323</span>
-          <button>
-            <MdOutlineAddShoppingCart />
-          </button>
+          {auth ? (
+            <button>
+              <MdOutlineAddShoppingCart />
+            </button>
+          ) : (
+            <button onClick={() => navigate("/login")}>Login</button>
+          )}
         </div>
       </div>
     </div>

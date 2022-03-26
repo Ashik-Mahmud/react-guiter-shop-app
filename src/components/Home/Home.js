@@ -2,12 +2,12 @@ import React from 'react';
 import Hero from '../Hero/Hero';
 import Products from '../Products/Products';
 import Header from "./../Header/Header";
-const Home = () => {
+const Home = ({auth, setAuth}) => {
   return (
     <>
-     <Header />
+     <Header auth={auth} setAuth={setAuth}/>
      <Hero />
-     <Products />
+     <Products auth={auth} />
     </>
   )
 }

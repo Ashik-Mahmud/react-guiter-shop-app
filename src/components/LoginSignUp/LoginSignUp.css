@@ -35,3 +35,15 @@
   font-family: poppins;
   margin: 0.5rem 0rem;
 }
+.message {
+  padding: 1rem;
+  border-radius: 4px;
+}
+.message.success {
+  color: #19993c;
+  background-color: #cef8d5;
+}
+.message.error {
+  background-color: #e25858dc;
+  color: #f00;
+}
