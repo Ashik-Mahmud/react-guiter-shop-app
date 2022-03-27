@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BsCreditCard2Front } from "react-icons/bs";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import { toast, ToastContainer } from "react-toastify";
+import swal from "sweetalert";
 import HandleAccess from "../HandleAccess/HandleAccess";
 import { Storage } from "../Storage/Storage";
 import "./Cart.css";
@@ -43,20 +44,36 @@ const Cart = ({ cartItems, products, setCartCount, setCartItems }) => {
   };
 
   const handleClearCart = () => {
-    if (window.confirm("Do you want clear all the carts")) {
-      localStorage.removeItem("shopping-cart");
-      setCartCount(0);
-      setIsItemsLength(false);
-    }
+    swal({
+      title: "Are you sure?",
+      text: "Once clear all carts, you will not be able to recover this carts item!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((res) => {
+      if (res) {
+        localStorage.removeItem("shopping-cart");
+        setCartCount(0);
+        setIsItemsLength(false);
+      }
+    });
   };
 
   const handleDeleteCart = (id) => {
-    if (window.confirm("Do you want delete this item?")) {
-      const items = Storage("shopping-cart");
-      const restItems = items.filter((item) => item.id !== id);
-      localStorage.setItem("shopping-cart", JSON.stringify(restItems));
-      window.location.reload();
-    }
+    swal({
+      title: "Are you sure?",
+      text: "Once you delete, you will not be able to recover this item!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((res) => {
+      if (res) {
+        const items = Storage("shopping-cart");
+        const restItems = items.filter((item) => item.id !== id);
+        localStorage.setItem("shopping-cart", JSON.stringify(restItems));
+        window.location.reload();
+      }
+    });
   };
 
   return (

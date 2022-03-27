@@ -4,13 +4,22 @@ import { BiUserCircle } from "react-icons/bi";
 import { GiGuitar } from "react-icons/gi";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { NavLink } from "react-router-dom";
+import swal from "sweetalert";
 import "./Header.css";
 const Header = ({ auth, setAuth, cartCount }) => {
   const handleLogOut = () => {
-    if (window.confirm("Do you want to log Out?")) {
-      sessionStorage.removeItem("user");
-      setAuth(false);
-    }
+    swal({
+      title: "Are you sure?",
+      text: "Once you logout, you will not be able to comes here again!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        sessionStorage.removeItem("user");
+        setAuth(false);
+      }
+    });
   };
 
   const userName = sessionStorage.getItem("user");

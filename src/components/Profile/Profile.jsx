@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BsFillCartXFill } from "react-icons/bs";
 import { FiEdit, FiUserX } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 import HandleAccess from "../HandleAccess/HandleAccess";
 import { Storage } from "./../Storage/Storage";
 import "./Profile.css";
@@ -40,16 +41,24 @@ const Profile = ({ setAuth }) => {
 
   /* Handle Delete Account */
   const HandleDeleteAccount = (username) => {
-    if (window.confirm("Do you want to delete you account forever?")) {
-      const items = Storage("user-info");
-      const itemsExceptDeleted = items.filter(
-        (item) => item.username !== username
-      );
-      localStorage.setItem("user-info", JSON.stringify(itemsExceptDeleted));
-      sessionStorage.removeItem("user");
-      navigate("/");
-      setAuth(false);
-    }
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover you account anymore!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((res) => {
+      if (res) {
+        const items = Storage("user-info");
+        const itemsExceptDeleted = items.filter(
+          (item) => item.username !== username
+        );
+        localStorage.setItem("user-info", JSON.stringify(itemsExceptDeleted));
+        sessionStorage.removeItem("user");
+        navigate("/");
+        setAuth(false);
+      }
+    });
   };
 
   /* Handle Edit Profile  */
@@ -72,10 +81,18 @@ const Profile = ({ setAuth }) => {
   };
 
   const handleClearCart = () => {
-    if (window.confirm("Do you want to clear all the carts?")) {
-      localStorage.removeItem("shopping-cart");
-      window.location.reload();
-    }
+    swal("Are you sure you want to do this?", {
+      buttons: ["Oh noez!", true],
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this imaginary file!",
+      icon: "warning",
+      dangerMode: true,
+    }).then((res) => {
+      if (res === true) {
+        localStorage.removeItem("shopping-cart");
+        window.location.reload();
+      }
+    });
   };
 
   return (
