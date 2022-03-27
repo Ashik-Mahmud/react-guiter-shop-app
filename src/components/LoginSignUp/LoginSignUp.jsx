@@ -1,8 +1,12 @@
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { getAuthentication as authentication } from "../Firebase/Firebase";
+import { firebaseSignIn } from "../Firebase/HandleSignIn";
 import { Storage } from "../Storage/Storage";
 import "./LoginSignUp.css";
+
 const LoginSignUp = ({ setAuth }) => {
   const [show, setShow] = useState(false);
   /* for data save */
@@ -18,6 +22,8 @@ const LoginSignUp = ({ setAuth }) => {
 
   const [message, setMessage] = useState(false);
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   /* navigate path */
   const navigate = useNavigate();
 
@@ -26,7 +32,11 @@ const LoginSignUp = ({ setAuth }) => {
     if (sessionUsername) {
       navigate("/dashboard");
     }
-  }, [navigate]);
+    if (isLoggedIn) {
+      setAuth(true);
+      navigate("/dashboard");
+    }
+  }, [navigate, isLoggedIn, setAuth]);
 
   /* save data into storage */
   const handleSubmit = (event) => {
@@ -80,6 +90,17 @@ const LoginSignUp = ({ setAuth }) => {
     }
   };
 
+  /* Handle firebase login system */
+  const handleFirebaseLogin = (e) => {
+    e.preventDefault();
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(authentication, provider)
+      .then((response) => {
+        firebaseSignIn(response, setIsLoggedIn);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <section id="login">
       {!show ? (
@@ -116,7 +137,7 @@ const LoginSignUp = ({ setAuth }) => {
 
             <div className="google-sign-in-btn">
               <span>or</span>
-              <button>
+              <button onClick={handleFirebaseLogin}>
                 <span>
                   <AiOutlineGoogle />
                   Google Sign in
