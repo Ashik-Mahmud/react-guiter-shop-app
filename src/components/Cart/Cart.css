@@ -1,0 +1,115 @@
+#cart {
+  padding: 1rem 0rem;
+  position: relative;
+}
+
+#cart .title {
+  margin: 0.5rem 0rem;
+  background-color: #f8f8f8;
+  padding: 0.7rem 0.8rem;
+  border-radius: 5px;
+  position: relative;
+  font-family: "poppins", sans-serif;
+}
+#cart .cart-container {
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  gap: 2rem;
+}
+#cart .cart-dashboard {
+  background-color: #f8f8f8;
+  padding: 1.4rem;
+  position: relative;
+}
+#cart .cart-dashboard-content {
+  position: relative;
+  margin: 1rem 0rem;
+}
+.cart-dashboard-content table {
+  width: 100%;
+  text-align: left;
+  position: relative;
+}
+.cart-dashboard table th,
+.cart-dashboard table td {
+  padding: 0.7rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.cart-dashboard .getCouponToggle {
+  margin-top: 0.8rem;
+  font-family: poppins;
+}
+.cart-dashboard .coupon-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+.cart-dashboard .coupon-panel.active {
+  max-height: 40px;
+}
+.cart-dashboard .coupon-panel div {
+  display: flex;
+  align-items: stretch;
+}
+
+.cart-dashboard input {
+  width: 150px;
+  padding: 0.5rem 0.6rem;
+  font-size: 0.9rem;
+  font-family: poppins;
+  border: 1px solid #ccc;
+  outline: none;
+}
+.cart-dashboard button {
+  padding: 0rem 1rem;
+  background: var(--primary-color);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: poppins;
+  color: #fff;
+}
+
+.cart-dashboard .btn-group {
+  margin-top: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.cart-dashboard .btn-group button {
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1rem;
+  font-family: poppins;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  justify-content: center;
+  border-radius: 4px;
+}
+.cart-dashboard .btn-group button:last-child {
+  background: #c74b50;
+}
+.disabled {
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.not-found-message {
+  text-align: center;
+  padding: 10rem 0rem;
+  position: relative;
+}
+.not-found-message span {
+  font-size: 5rem;
+}

@@ -1,0 +1,69 @@
+.cart-item {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  gap: 1rem;
+  margin: 0.5rem 0rem;
+  padding: 0.5rem;
+  background-color: #f8f8f8;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+.cart-item .cart-inner-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+.cart-inner-item img {
+  border-radius: 5px;
+}
+.cart-inner-item .name {
+  margin: 0.4rem 0rem;
+}
+.cart-inner-item span {
+  margin: 0.4rem 0rem;
+  display: block;
+}
+
+.cart-inner-item .counter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.cart-inner-item .counter-input {
+  display: flex;
+  margin: 0.5rem 0rem;
+  align-items: stretch;
+}
+.cart-inner-item .counter-input input {
+  width: 60px;
+  border: 1px solid #f1f1f1f6;
+  font-size: 1rem;
+  font-family: "poppins";
+  text-align: center;
+}
+.cart-inner-item .counter-input button {
+  padding: 0.6rem 0.7rem;
+  font-size: 1.2rem;
+  background-color: #f0f0f0;
+  border: none;
+  outline: none;
+  border: 1px solid #f1f1f1f6;
+  cursor: pointer;
+}
+.delete-btn {
+  justify-self: flex-end;
+  align-self: center;
+  padding: 0rem 0.9rem;
+}
+.delete-btn button {
+  padding: 0.5rem;
+  background: #c74b50;
+  font-size: 1rem;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
