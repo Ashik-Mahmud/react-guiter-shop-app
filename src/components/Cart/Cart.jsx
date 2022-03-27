@@ -6,11 +6,12 @@ import HandleAccess from "../HandleAccess/HandleAccess";
 import { Storage } from "../Storage/Storage";
 import "./Cart.css";
 import CartItem from "./CartItem/CartItem";
-const Cart = ({ cartItems, products }) => {
+const Cart = ({ cartItems, products, setCartCount }) => {
   const [cartTotal, setCartTotal] = useState(0);
   const [show, setShow] = useState(false);
   const [coupon, setCoupon] = useState("");
   const [isCoupon, setIsCoupon] = useState(false);
+  const [isItemsLength, setIsItemsLength] = useState(false);
   HandleAccess();
 
   const cartItemsId = cartItems.map((item) => item.id);
@@ -22,6 +23,11 @@ const Cart = ({ cartItems, products }) => {
     const items = Storage("shopping-cart");
     const totalMoney = items.reduce((acc, item) => item.price + acc, 0);
     setCartTotal(totalMoney);
+    if (items.length > 0) {
+      setIsItemsLength(true);
+    } else {
+      setIsItemsLength(false);
+    }
   }, []);
 
   /* handle Coupon */
@@ -36,6 +42,14 @@ const Cart = ({ cartItems, products }) => {
     }
   };
 
+  const handleClearCart = () => {
+    if (window.confirm("Do you want clear all the carts")) {
+      localStorage.removeItem("shopping-cart");
+      setCartCount(0);
+      setIsItemsLength(false);
+    }
+  };
+
   return (
     <section id="cart">
       {" "}
@@ -45,7 +59,7 @@ const Cart = ({ cartItems, products }) => {
           <h1>Carts Item</h1>
           <p>Get you all selected product here</p>
         </div>
-        {Storage("shopping-cart").length > 0 ? (
+        {isItemsLength ? (
           <div className="cart-container">
             <div className="cart-items">
               {cartAddedItems.map((item) => (
@@ -120,7 +134,7 @@ const Cart = ({ cartItems, products }) => {
                   <button>
                     Check Out <BsCreditCard2Front />
                   </button>
-                  <button>
+                  <button onClick={handleClearCart}>
                     Clear Cart <MdOutlineRemoveShoppingCart />{" "}
                   </button>
                 </div>
