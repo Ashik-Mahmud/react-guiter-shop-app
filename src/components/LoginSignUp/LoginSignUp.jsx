@@ -44,7 +44,7 @@ const LoginSignUp = ({ setAuth }) => {
     if (!name || !email || !username || !password) {
       return alert("Fill out all the Required Fields.");
     }
-    const items = Storage();
+    const items = Storage("user-info");
     const isHas = items.find((item) => item.username === username);
     const id = Math.round(Math.random() * 10000);
     if (!isHas) {
@@ -75,7 +75,7 @@ const LoginSignUp = ({ setAuth }) => {
     if (!loginUsername || !loginPassword) {
       return alert("All field are required for login");
     }
-    const items = Storage();
+    const items = Storage("user-info");
     const isHasAccount = items.find(
       (item) =>
         item.username === loginUsername && item.password === loginPassword

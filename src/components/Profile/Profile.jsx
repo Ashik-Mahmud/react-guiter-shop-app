@@ -21,7 +21,7 @@ const Profile = ({ setAuth }) => {
   const [profile, setProfile] = useState({});
   useEffect(() => {
     const sessionUsername = sessionStorage.getItem("user");
-    const items = Storage();
+    const items = Storage("user-info");
     const getUser = items.find((item) => item.username === sessionUsername);
     setProfile(getUser);
   }, []);
@@ -41,7 +41,7 @@ const Profile = ({ setAuth }) => {
   /* Handle Delete Account */
   const HandleDeleteAccount = (username) => {
     if (window.confirm("Do you want to delete you account forever?")) {
-      const items = Storage();
+      const items = Storage("user-info");
       const itemsExceptDeleted = items.filter(
         (item) => item.username !== username
       );
@@ -56,7 +56,7 @@ const Profile = ({ setAuth }) => {
 
   const handleUpdate = (event) => {
     event.preventDefault();
-    const items = Storage();
+    const items = Storage("user-info");
     sessionStorage.setItem("user", loginUsername);
     const updatedItem = items.find((item) => item.id === id);
     if (updatedItem) {

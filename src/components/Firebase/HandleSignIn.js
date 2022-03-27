@@ -4,7 +4,7 @@ const handleSignInWithFirebase = (response , setIsLoggedIn) =>{
     if(response){
         
        const {email, displayName, photoURL} = response.user;
-       const items = Storage();
+       const items = Storage("user-info");
        const id = Math.round(Math.random() * 10000);
 
       const isHas = items.find(item => item.email === email);

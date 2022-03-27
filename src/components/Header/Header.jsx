@@ -5,7 +5,7 @@ import { GiGuitar } from "react-icons/gi";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import "./Header.css";
-const Header = ({ auth, setAuth, isDashboard }) => {
+const Header = ({ auth, setAuth, cartCount }) => {
   const handleLogOut = () => {
     if (window.confirm("Do you want to log Out?")) {
       sessionStorage.removeItem("user");
@@ -49,7 +49,7 @@ const Header = ({ auth, setAuth, isDashboard }) => {
                 <li>
                   <NavLink to={"/cart"} className="user-link">
                     <MdOutlineShoppingCart />
-                    <sup className="badge">0</sup>
+                    <sup className="badge">{cartCount}</sup>
                   </NavLink>
                 </li>
                 <li>

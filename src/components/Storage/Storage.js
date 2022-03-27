@@ -1,5 +1,5 @@
-const getItemFromStorage = () =>{
-    const getItems = localStorage.getItem("user-info")
+const getItemFromStorage = (key) =>{
+    const getItems = localStorage.getItem(key)
     let usersInfo = [];
 
     if(getItems){
