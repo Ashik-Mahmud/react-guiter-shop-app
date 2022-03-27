@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { AiOutlineGoogle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { Storage } from "../Storage/Storage";
 import "./LoginSignUp.css";
@@ -112,6 +113,16 @@ const LoginSignUp = ({ setAuth }) => {
               />
             </div>
             <button onClick={handleLogin}>Login</button>
+
+            <div className="google-sign-in-btn">
+              <span>or</span>
+              <button>
+                <span>
+                  <AiOutlineGoogle />
+                  Google Sign in
+                </span>
+              </button>
+            </div>
             <p>
               Not Account yet?{" "}
               <span

@@ -1,6 +1,7 @@
 import React from "react";
 import { AiOutlineLogout } from "react-icons/ai";
 import { BiUserCircle } from "react-icons/bi";
+import { GiGuitar } from "react-icons/gi";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import "./Header.css";
@@ -17,7 +18,10 @@ const Header = ({ auth, setAuth, isDashboard }) => {
       <div className="container">
         <nav>
           <h3 className="logo">
-            <NavLink to="/">LoginReg</NavLink>
+            <NavLink to="/">
+              {" "}
+              <GiGuitar /> Guitar
+            </NavLink>
           </h3>
           <ul>
             <li>

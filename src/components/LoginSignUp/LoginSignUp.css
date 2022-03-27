@@ -1,7 +1,7 @@
 #login {
   display: grid;
   place-items: center;
-  min-height: 100vh;
+  min-height: 90vh;
   position: relative;
   background-color: #f8f8f8;
 }
@@ -47,4 +47,33 @@
 .message.error {
   background-color: #e25858dc;
   color: #f00;
+}
+
+.google-sign-in-btn {
+  position: relative;
+  text-align: center;
+  margin: 0.5rem 0rem;
+}
+.google-sign-in-btn hr {
+  border: none;
+  border-bottom: 1px solid #ddd;
+  margin: 0.4rem 0rem;
+}
+.google-sign-in-btn > span {
+  font-size: 1rem;
+  text-transform: capitalize;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 0.4rem 0rem;
+  display: block;
+  color: #666;
+}
+.google-sign-in-btn button {
+  border-radius: 5px;
+  margin-top: 0.4rem;
+}
+.google-sign-in-btn button span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
