@@ -13,6 +13,8 @@ const Header = ({ auth, setAuth, isDashboard }) => {
     }
   };
 
+  const userName = sessionStorage.getItem("user");
+
   return (
     <header id="header">
       <div className="container">
@@ -53,7 +55,9 @@ const Header = ({ auth, setAuth, isDashboard }) => {
                 <li>
                   <NavLink to={"/profile"} className="user-link">
                     <BiUserCircle />
-                    {sessionStorage.getItem("user")}
+                    {userName.length > 10
+                      ? userName.substring(0, 10) + "..."
+                      : userName}
                   </NavLink>
                 </li>
                 <li>
