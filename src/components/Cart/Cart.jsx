@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BsCreditCard2Front } from "react-icons/bs";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import HandleAccess from "../HandleAccess/HandleAccess";
 import { Storage } from "../Storage/Storage";
@@ -14,8 +13,6 @@ const Cart = ({ cartItems, products, setCartCount, setCartItems }) => {
   const [isCoupon, setIsCoupon] = useState(false);
   const [isItemsLength, setIsItemsLength] = useState(false);
   HandleAccess();
-
-  const navigate = useNavigate();
 
   const cartItemsId = cartItems.map((item) => item.id);
   const cartAddedItems = products.filter((product) =>
