@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
 import "./CartItem.css";
 import { DecreaseCount, IncreaseCount, showQuantity } from "./handleCartCount";
-const CartItem = ({ item, setCartTotal }) => {
+const CartItem = ({ item, setCartTotal, handleDeleteCart }) => {
   const [count, setCount] = useState(1);
   const { image, name, price, id } = item;
 
@@ -40,7 +40,7 @@ const CartItem = ({ item, setCartTotal }) => {
       </div>
 
       <div className="delete-btn">
-        <button>
+        <button onClick={() => handleDeleteCart(id)}>
           <RiDeleteBinLine />
         </button>
       </div>

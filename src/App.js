@@ -47,7 +47,7 @@ function App() {
             <Route path='/login' element={<LoginSignUp setAuth={setAuth}/>} />
             <Route path='/dashboard' element={<Dashboard  />} />
             <Route path='/profile' element={<Profile setAuth={setAuth} />} />
-            <Route path='/cart' element={<Cart setCartCount={setCartCount} products={products} cartItems={cartItems} />} />
+            <Route path='/cart' element={<Cart setCartItems={setCartItems} setCartCount={setCartCount} products={products} cartItems={cartItems} />} />
             <Route path='/about' element={<About />} />
         </Routes>
     </Router>

@@ -38,7 +38,9 @@ const showQuantity = (id) =>{
 
 const cartTotalMoney = () =>{
     const totalMoney = Storage("shopping-cart").reduce((acc, item)=> item.price + acc, 0)
-    return totalMoney;
+    if(totalMoney){
+        return totalMoney;
+    }
 }
 
 

@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { BsCreditCard2Front } from "react-icons/bs";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import HandleAccess from "../HandleAccess/HandleAccess";
 import { Storage } from "../Storage/Storage";
 import "./Cart.css";
 import CartItem from "./CartItem/CartItem";
-const Cart = ({ cartItems, products, setCartCount }) => {
+const Cart = ({ cartItems, products, setCartCount, setCartItems }) => {
   const [cartTotal, setCartTotal] = useState(0);
   const [show, setShow] = useState(false);
   const [coupon, setCoupon] = useState("");
   const [isCoupon, setIsCoupon] = useState(false);
   const [isItemsLength, setIsItemsLength] = useState(false);
   HandleAccess();
+
+  const navigate = useNavigate();
 
   const cartItemsId = cartItems.map((item) => item.id);
   const cartAddedItems = products.filter((product) =>
@@ -50,6 +53,15 @@ const Cart = ({ cartItems, products, setCartCount }) => {
     }
   };
 
+  const handleDeleteCart = (id) => {
+    if (window.confirm("Do you want delete this item?")) {
+      const items = Storage("shopping-cart");
+      const restItems = items.filter((item) => item.id !== id);
+      localStorage.setItem("shopping-cart", JSON.stringify(restItems));
+      window.location.reload();
+    }
+  };
+
   return (
     <section id="cart">
       {" "}
@@ -67,6 +79,7 @@ const Cart = ({ cartItems, products, setCartCount }) => {
                   key={item.id}
                   item={item}
                   setCartTotal={setCartTotal}
+                  handleDeleteCart={handleDeleteCart}
                 />
               ))}
             </div>
