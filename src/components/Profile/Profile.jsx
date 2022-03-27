@@ -71,6 +71,13 @@ const Profile = ({ setAuth }) => {
     window.location.reload();
   };
 
+  const handleClearCart = () => {
+    if (window.confirm("Do you want to clear all the carts?")) {
+      localStorage.removeItem("shopping-cart");
+      window.location.reload();
+    }
+  };
+
   return (
     <section id="profile">
       <div className="profile-card">
@@ -93,7 +100,7 @@ const Profile = ({ setAuth }) => {
             <FiEdit />
             {show ? "Close" : "Open"} Edit
           </button>
-          <button>
+          <button onClick={handleClearCart}>
             <BsFillCartXFill />
             Clear Cart
           </button>
