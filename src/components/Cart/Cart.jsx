@@ -7,18 +7,22 @@ import HandleAccess from "../HandleAccess/HandleAccess";
 import { Storage } from "../Storage/Storage";
 import "./Cart.css";
 import CartItem from "./CartItem/CartItem";
-const Cart = ({ cartItems, products, setCartCount, setCartItems }) => {
+const Cart = ({ cartItems, products, setCartCount }) => {
   const [cartTotal, setCartTotal] = useState(0);
   const [show, setShow] = useState(false);
   const [coupon, setCoupon] = useState("");
   const [isCoupon, setIsCoupon] = useState(false);
   const [isItemsLength, setIsItemsLength] = useState(false);
+  const [storageItems, setStorageItems] = useState([]);
   HandleAccess();
 
-  const cartItemsId = cartItems.map((item) => item.id);
-  const cartAddedItems = products.filter((product) =>
-    cartItemsId.includes(product.id)
-  );
+  useEffect(() => {
+    const cartItemsId = cartItems.map((item) => item.id);
+    const cartAddedItems = products.filter((product) =>
+      cartItemsId.includes(product.id)
+    );
+    setStorageItems(cartAddedItems);
+  }, [cartItems, products]);
 
   useEffect(() => {
     const items = Storage("shopping-cart");
@@ -71,7 +75,15 @@ const Cart = ({ cartItems, products, setCartCount, setCartItems }) => {
         const items = Storage("shopping-cart");
         const restItems = items.filter((item) => item.id !== id);
         localStorage.setItem("shopping-cart", JSON.stringify(restItems));
-        window.location.reload();
+        const restItemsForCarts = storageItems.filter((item) => item.id !== id);
+        setStorageItems(restItemsForCarts);
+        setCartCount(restItemsForCarts.length);
+        const deletedItem = items.find((item) => item.id === id);
+        setCartTotal(cartTotal - deletedItem.price);
+        if (restItemsForCarts.length === 0) {
+          setCartCount(0);
+          setIsItemsLength(false);
+        }
       }
     });
   };
@@ -88,7 +100,7 @@ const Cart = ({ cartItems, products, setCartCount, setCartItems }) => {
         {isItemsLength ? (
           <div className="cart-container">
             <div className="cart-items">
-              {cartAddedItems.map((item) => (
+              {storageItems.map((item) => (
                 <CartItem
                   key={item.id}
                   item={item}
@@ -104,7 +116,7 @@ const Cart = ({ cartItems, products, setCartCount, setCartItems }) => {
                   <tbody>
                     <tr>
                       <td>Selected Items</td>
-                      <th>{cartItemsId.length}</th>
+                      <th>{storageItems.length}</th>
                     </tr>
                     <tr>
                       <td>Total Money</td>
@@ -112,7 +124,7 @@ const Cart = ({ cartItems, products, setCartCount, setCartItems }) => {
                     </tr>
                     <tr>
                       <td>Shipping Charge</td>
-                      <th>10$</th>
+                      <th>{storageItems.length > 0 ? "10" : "00"} $</th>
                     </tr>
                     <tr>
                       <td>Tax 5%</td>
@@ -146,7 +158,7 @@ const Cart = ({ cartItems, products, setCartCount, setCartItems }) => {
                     <input
                       type="text"
                       placeholder="Coupon"
-                      value={coupon}
+                      value={coupon || ""}
                       onChange={(e) => setCoupon(e.target.value)}
                     />
                     <button

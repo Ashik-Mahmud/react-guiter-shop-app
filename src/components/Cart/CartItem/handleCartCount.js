@@ -1,18 +1,18 @@
 import { Storage } from "../../Storage/Storage";
 
-const handleIncreaseCartCount = (setCount, count, item, price, setCartTotal) =>{
+const handleIncreaseCartCount = (setCount, count, item, price) =>{
         setCount(count + 1)
         const storageItems = Storage("shopping-cart")
         const getItemId = storageItems.find(storageItem => storageItem.id === item.id)
         getItemId.quantity = getItemId.quantity + 1;
         getItemId.price = price * getItemId.quantity;
         localStorage.setItem("shopping-cart", JSON.stringify(storageItems))
-        setCartTotal(cartTotalMoney())
+        
         
 };
 
 
-const handleDecreaseCartCount = (setCount, count, item, price, setCartTotal) =>{
+const handleDecreaseCartCount = (setCount, count, item, price) =>{
     if(count > 1){
         setCount(count - 1)
       
@@ -23,7 +23,7 @@ const handleDecreaseCartCount = (setCount, count, item, price, setCartTotal) =>{
         getItemId.quantity = getItemId.quantity - 1;
         getItemId.price = getItemId.price - price;
         localStorage.setItem("shopping-cart", JSON.stringify(storageItems))
-        setCartTotal(cartTotalMoney())
+       
     }
    
 };
@@ -31,7 +31,7 @@ const handleDecreaseCartCount = (setCount, count, item, price, setCartTotal) =>{
 
 const showQuantity = (id) =>{
     const getItemId = Storage("shopping-cart").find(storageItem => storageItem.id === id)
-    return getItemId.quantity;
+    return getItemId?.quantity;
 }
 
 
