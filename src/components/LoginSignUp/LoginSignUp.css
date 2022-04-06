@@ -54,6 +54,12 @@
   text-align: center;
   margin: 0.5rem 0rem;
 }
+.google-sign-in-btn .btn-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  justify-content: center;
+}
 .google-sign-in-btn hr {
   border: none;
   border-bottom: 1px solid #ddd;

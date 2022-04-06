@@ -9,22 +9,21 @@ const handleSignInWithFirebase = (response , setIsLoggedIn) =>{
 
       const isHas = items.find(item => item.email === email);
       if(isHas){
-        sessionStorage.setItem("user", email)
+        sessionStorage.setItem("user", email ? email : displayName)
         setIsLoggedIn(true)
       }else{
         setIsLoggedIn(true)
         items.push({
             id,
             name: displayName,
-            email,
-            username: email,
+            email: email ? email : displayName,
+            username: email ? email : displayName,
             password: null,
             avatar: photoURL,
           });
            
             localStorage.setItem('user-info', JSON.stringify(items))
-            sessionStorage.setItem("user", email)
-            sessionStorage.setItem("user", email)
+            sessionStorage.setItem("user",  email ? email : displayName)
        
       }
 

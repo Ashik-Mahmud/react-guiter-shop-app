@@ -1,6 +1,10 @@
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import React, { useEffect, useState } from "react";
-import { AiOutlineGoogle } from "react-icons/ai";
+import { AiFillGithub, AiOutlineGoogle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { getAuthentication as authentication } from "../Firebase/Firebase";
 import { firebaseSignIn } from "../Firebase/HandleSignIn";
@@ -101,6 +105,16 @@ const LoginSignUp = ({ setAuth }) => {
       .catch((err) => console.log(err));
   };
 
+  const handleGithubFirebaseLogin = (e) => {
+    e.preventDefault();
+    const provider = new GithubAuthProvider();
+    signInWithPopup(authentication, provider)
+      .then((response) => {
+        firebaseSignIn(response, setIsLoggedIn);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <section id="login">
       {!show ? (
@@ -137,12 +151,18 @@ const LoginSignUp = ({ setAuth }) => {
 
             <div className="google-sign-in-btn">
               <span>or</span>
-              <button onClick={handleFirebaseLogin}>
-                <span>
-                  <AiOutlineGoogle />
-                  Google Sign in
-                </span>
-              </button>
+              <div className="btn-group">
+                <button onClick={handleFirebaseLogin}>
+                  <span>
+                    <AiOutlineGoogle />
+                  </span>
+                </button>
+                <button onClick={handleGithubFirebaseLogin}>
+                  <span>
+                    <AiFillGithub />
+                  </span>
+                </button>
+              </div>
             </div>
             <p>
               Not Account yet?{" "}
